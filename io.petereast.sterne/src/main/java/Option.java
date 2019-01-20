@@ -3,9 +3,13 @@ import java.util.function.Function;
 
 public class Option<T> {
     private T thing;
-    private boolean isSome = false;
+    private boolean isSome;
 
-    public static Option<T> of(T thing) {
+    public boolean present() {
+        return this.isSome;
+    }
+
+    public static <O> Option<O> of(O thing) {
         if (thing == null) {
             return new Option(false, null);
         } else {
@@ -27,7 +31,7 @@ public class Option<T> {
         }
     }
 
-    public T get() {
+    public T get() throws NoSuchElementException {
         if (!this.isSome) {
             throw new NoSuchElementException();
         } else {
@@ -49,7 +53,7 @@ public class Option<T> {
 
     public <O> Option<O> replace(O other) {
         if (this.isSome) {
-            return new Option(true ,this.thing);
+            return new Option(true, this.thing);
         } else {
             return Option.of(other);
         }
