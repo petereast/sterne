@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/io.petereast.sterne.iml" filepath="$PROJECT_DIR$/.idea/modules/io.petereast.sterne.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/io.petereast.sterne_main.iml" filepath="$PROJECT_DIR$/.idea/modules/io.petereast.sterne_main.iml" group="io.petereast.sterne" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/io.petereast.sterne_test.iml" filepath="$PROJECT_DIR$/.idea/modules/io.petereast.sterne_test.iml" group="io.petereast.sterne" />
       <module fileurl="file://$PROJECT_DIR$/.idea/sterne.iml" filepath="$PROJECT_DIR$/.idea/sterne.iml" />
     </modules>
   </component>

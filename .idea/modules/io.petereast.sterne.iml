@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module external.system.id="GRADLE" type="JAVA_MODULE" version="4">
+<module external.linked.project.id="io.petereast.sterne" external.linked.project.path="$MODULE_DIR$/../../io.petereast.sterne" external.root.project.path="$MODULE_DIR$/../../io.petereast.sterne" external.system.id="GRADLE" external.system.module.group="" external.system.module.version="1.0-SNAPSHOT" type="JAVA_MODULE" version="4">
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
-    <content url="file://$MODULE_DIR$/../../io.petereast.sterne" />
-    <orderEntry type="jdk" jdkName="1.8" jdkType="JavaSDK" />
+    <content url="file://$MODULE_DIR$/../../io.petereast.sterne">
+      <excludeFolder url="file://$MODULE_DIR$/../../io.petereast.sterne/.gradle" />
+      <excludeFolder url="file://$MODULE_DIR$/../../io.petereast.sterne/build" />
+      <excludeFolder url="file://$MODULE_DIR$/../../io.petereast.sterne/out" />
+    </content>
+    <orderEntry type="jdk" jdkName="11.0" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>
