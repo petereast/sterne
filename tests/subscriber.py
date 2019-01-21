@@ -5,7 +5,7 @@ s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect(('localhost', 4184))
 
 # Start being a subscriber to `test`
-s.send(b'-test')
+s.send(b'-test\n')
 
 # Get some data
 while True:
