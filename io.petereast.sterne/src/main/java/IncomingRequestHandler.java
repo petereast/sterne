@@ -29,7 +29,7 @@ public class IncomingRequestHandler {
 
        // Start a socket server
         try {
-            ServerSocket server = new ServerSocket(4183);
+            ServerSocket server = new ServerSocket(4184);
 
             // HACK: Get a ref to the streams thing in scope for the anonymous class
             HashMap<String, BlockingQueue<byte[]>> local_streams = this.streams;
@@ -40,6 +40,7 @@ public class IncomingRequestHandler {
                 // Triage the socket
 
                 // Read the first line of the stream
+                // XXX: This blocks the master thread until a valid command is sent!!
                 BufferedReader reader = new BufferedReader(new InputStreamReader(incoming_socket.getInputStream()));
                 Option<IncomingCommand> incoming_command = IncomingCommand.parse(reader.readLine());
 
@@ -69,7 +70,8 @@ public class IncomingRequestHandler {
                                         StreamSubscriber sub = new StreamSubscriber(
                                                 command.getStream_name(),
                                                 opt_stream.get(),
-                                                incoming_socket.getOutputStream()
+                                                incoming_socket.getOutputStream(),
+                                                incoming_socket.getInputStream()
                                         );
 
                                         sub.start();
