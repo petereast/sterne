@@ -17,17 +17,20 @@ public class StreamPublisher extends Thread {
 
     public void run() {
         // Perform the logic
-        byte[] buffer = new byte[2048];
         try {
+            byte[] buffer = new byte[2048];
             while ((this.incoming_data.read(buffer) > 0)) {
                 // Process each part of the stream;
                 // Keep taking shit from the stream until it closes.
                 this.backing_store.offer(buffer, 10, TimeUnit.SECONDS);
-                System.out.println("Debug: Wrote to buffer");
+                System.out.println("Debug: Wrote to buffer, buffer size:" + this.backing_store.size());
             }
         } catch (IOException e) {
             e.printStackTrace();
         } catch (InterruptedException e){
+            e.printStackTrace();
+        } catch (NullPointerException e) {
+            System.err.println("npe");
             e.printStackTrace();
         }
     }
