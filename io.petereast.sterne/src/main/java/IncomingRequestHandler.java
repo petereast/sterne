@@ -65,20 +65,14 @@ public class IncomingRequestHandler {
                                     break;
                                 case CONSUME:
                                     System.out.println("CONSUME: " + command.getStream_name());
-                                    Option<BlockingQueue<byte[]>> opt_stream = Option.of(local_streams.get(command.getStream_name()));
-                                    if(opt_stream.present()) {
-                                        StreamSubscriber sub = new StreamSubscriber(
-                                                command.getStream_name(),
-                                                opt_stream.get(),
-                                                incoming_socket.getOutputStream(),
-                                                incoming_socket.getInputStream()
-                                        );
+                                    StreamSubscriber sub = new StreamSubscriber(
+                                            command.getStream_name(),
+                                            local_streams,
+                                            incoming_socket.getOutputStream(),
+                                            incoming_socket.getInputStream()
+                                    );
 
-                                        sub.start();
-                                    } else {
-                                        System.out.println("Warning: Attempting to consume from nonexistent queue");
-                                        // TODO: Maybe this should create the stream? :thinking_face:
-                                    }
+                                    sub.start();
                                     break;
                                 case PROCESS:
                                     System.out.println("Warning: PROCESS req - not implemented");

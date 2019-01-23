@@ -6,9 +6,12 @@ s.connect(('localhost', 4184))
 
 # Start being a subscriber to `test`
 s.send(b'-test\n')
-
 # Get some data
-while True:
-    print(s.recv(1024).decode('utf-8'))
-    s.send(b'.')
+try:
+    while True:
+        print(s.recv(1024).decode('utf-8'))
+        print('sending ack')
+        s.send(b'.')
+except KeyboardInterrupt:
+    s.close()
 

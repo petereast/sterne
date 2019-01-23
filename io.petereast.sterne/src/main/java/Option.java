@@ -30,6 +30,14 @@ public class Option<T> {
             return new Option(false, null);
         }
     }
+    public <O> Option<O> chain(Function<T, Option<O>> fn) {
+
+        if (this.isSome) {
+            return fn.apply(this.thing);
+        } else {
+            return new Option(false, null);
+        }
+    }
 
     public T get() throws NoSuchElementException {
         if (!this.isSome) {
